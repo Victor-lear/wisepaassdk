@@ -49,15 +49,15 @@ def __generateConfig():
     config = EdgeConfig()
     nodeConfig = NodeConfig(nodeType = constant.EdgeType['Gateway'])
     config.node = nodeConfig
-    for i in range(2):
+    for i in range(11):
         deviceConfig = DeviceConfig(id = 'Floor'+str(i+1),
           name = 'Floor'+str(i+1),
           description = 'Floor'+str(i+1),
           deviceType = 'Smart Device',
           retentionPolicyName = '')
-        for j in range(2):
-            analog = AnalogTagConfig(name = 'x'+str(i+1),
-                description = 'x'+str(i+1),
+        for j in range(20):
+            analog = AnalogTagConfig(name = 'x'+str(j+1),
+                description = 'x'+str(j+1),
                 readOnly = False,
                 arraySize = 0,
                 spanHigh = 1000,
@@ -66,9 +66,9 @@ def __generateConfig():
                 integerDisplayFormat = 4,
                 fractionDisplayFormat = 2)
             deviceConfig.analogTagList.append(analog)
-        for j in range(2):
-            analog = AnalogTagConfig(name = 'y'+str(i+1),
-                description = 'y'+str(i+1),
+        for j in range(20):
+            analog = AnalogTagConfig(name = 'y'+str(j+1),
+                description = 'y'+str(j+1),
                 readOnly = False,
                 arraySize = 0,
                 spanHigh = 1000,
@@ -83,17 +83,17 @@ def __generateConfig():
     return config 
 def __generateData():
       edgeData = EdgeData()
-      for i in range(2):
-        for j in range(2):
+      for i in range(11):
+        for j in range(20):
             deviceId = 'Floor'+str(i+1)
-            tagName = 'x'+str(i+1)
-            value = int(1)
+            tagName = 'x'+str(j+1)
+            value = int(2)
             
             tag = EdgeTag(deviceId, tagName, value)
             edgeData.tagList.append(tag)
-        for j in range(2):
+        for j in range(20):
             deviceId = 'Floor'+str(i+1)
-            tagName = 'y'+str(i+1)
+            tagName = 'y'+str(j+1)
             value = int(1)
             tag = EdgeTag(deviceId, tagName, value)
             edgeData.tagList.append(tag)
@@ -104,8 +104,14 @@ def senddata(_edgeAgent):
      _edgeAgent.sendData(data)
 
 
-
+################creat#####################
 #creatdataconnect(_edgeAgent)   #creatconnect
-updateconfig(_edgeAgent)
-senddata(_edgeAgent)
-_edgeAgent.disconnect()
+#_edgeAgent.disconnect()
+################update####################
+#updateconfig(_edgeAgent)
+#while(1):
+        
+#    senddata(_edgeAgent)
+#    time.sleep(300)
+
+
