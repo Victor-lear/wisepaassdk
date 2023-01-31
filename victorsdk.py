@@ -95,7 +95,19 @@ def senddata(_edgeAgent):
      data = __generateData()
      _edgeAgent.sendData(data)
 
-
+def __generateDelteDeviceConfig():
+      config = EdgeConfig()
+      nodeConfig = NodeConfig()
+      config.node = nodeConfig
+      for i in range(11):
+        deviceConfig = DeviceConfig(id = 'Floor' + str(i+1))
+        config.node.deviceList.append(deviceConfig)
+      return config
+def delet(_edgeAgent):
+    config=__generateDelteDeviceConfig()
+    _edgeAgent.uploadConfig(action = constant.ActionType['Delete'], edgeConfig = config)
+########delet##########
+#delet(_edgeAgent)
 ###############creat#####################
 creatdataconnect(_edgeAgent)   #creatconnect
 _edgeAgent.disconnect()
